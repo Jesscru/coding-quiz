@@ -1,16 +1,25 @@
 body {
+    /* need to change this font to one that matches example a little closer */
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     margin: 20px;
 }
 
-.timer {
-    position: relative; 
+#time-display {
+ float: right;
+ margin: 0;
 }
 
-#time-display {
- position: absolute;
- top: 0;
- right: 0;
- margin-top: 0;
+.title
+.instructions {
+    ;
+    text-align: center;
+}
+
+.start {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
 }
