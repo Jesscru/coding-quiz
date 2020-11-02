@@ -3,25 +3,23 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 18px;
     margin: 20px;
-    display: flex;
 }
 
 #time-display {
- float: right;
- margin: 0;
-
+float: right;
 }
- .title {
-     justify-content: center;
-     align-items: center;
+
+ .title, 
+ .start {
+     text-align: center;
+     width: auto;
+     margin: auto;
  }
 
 .instructions {
-    /* not working for some reason  */
-    text-align: center;
+    /* centering not working for some reason  */
     margin: auto;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
 .start {
