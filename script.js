@@ -13,7 +13,7 @@ function startQuiz(){
     var quizTime = setInterval(function(){
         timeStart--;
         timer.textContent = 'Time: ' + changeToSec;
-    }, 75000)
+    }, 0)
 
     if (quizTime === 0) {
         clearInterval(quizTime);
