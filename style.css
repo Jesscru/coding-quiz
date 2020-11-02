@@ -7,13 +7,13 @@ body {
 
 #time-display {
 float: right;
+margin: 0;
 }
 
- .title, 
- .start {
+ .title {
      text-align: center;
      width: auto;
-     margin: auto;
+     margin: 25px auto;
  }
 
 .instructions {
@@ -27,5 +27,7 @@ float: right;
     color: white;
     padding: 10px;
     text-align: center;
+    width: auto;
+    margin: auto;
     border-radius: 10px;
 }
