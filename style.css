@@ -10,7 +10,10 @@ float: right;
 margin: 0;
 }
 
- .title {
+ .title,
+ .input, 
+ .button, 
+ .instructions{
      text-align: center;
      width: auto;
      margin: 25px auto;
@@ -26,8 +29,6 @@ margin: 0;
     background-color: blueviolet;
     color: white;
     padding: 10px;
-    text-align: center;
     width: auto;
-    margin: auto;
     border-radius: 10px;
 }
