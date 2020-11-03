@@ -9,7 +9,8 @@ var timeStart = 75000;
 var changeToSec = timeStart / 1000;
 
 // start timer at 75secs when the start button is clicked 
-function startQuiz(){
+startButton.onclick = function startQuiz(){
+  
     var quizTime = setInterval(function(){
         timeStart--;
         timer.textContent = 'Time: ' + changeToSec;
@@ -20,10 +21,6 @@ function startQuiz(){
     }
 }
 
-    console.log(startButton);
-    console.log(instructions); 
-    console.log(title); 
-    console.log(timer); 
+console.log(changeToSec);
 
-// startButton.addEventListener('click', startQuiz());
 
