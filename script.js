@@ -4,6 +4,7 @@ var answerBtn = document.getElementsByClassName("answer-choices");
 var submitBtn = document.querySelector(".submit-button");
 var goBackBtn = document.querySelector("#go-back");
 var clearBtn = document.querySelector("#clear");
+
 // variables to access other html elements
 var title = document.querySelector(".title");
 var instructions = document.getElementsByClassName("instructions");
@@ -16,6 +17,7 @@ var allDone = document.querySelector('.all-done');
 // js exclusive variables
 var timeStart = 75000;
 var changeToSec = timeStart / 1000;
+
 // each question saved in an object, answers nested inside question object, all stored in an array
 var quizContent = [
     { 
@@ -30,8 +32,8 @@ var quizContent = [
 },
 
     {
-        question2: 'The condition of an if / else statement is enclosed within _______.', 
-        answers2: {
+        question: 'The condition of an if / else statement is enclosed within _______.', 
+        answers: {
             1: 'quotes',
             2: 'curly brackets',
             3: 'parentheses',
@@ -41,8 +43,8 @@ var quizContent = [
 },
     
     {
-        question2: 'Arrays in JavaScripts can be used to store _______. ', 
-        answers2: {
+        question: 'Arrays in JavaScripts can be used to store _______. ', 
+        answers: {
             1: 'numbers and strings',
             2: 'other arrays',
             3: 'booleans',
@@ -52,8 +54,8 @@ var quizContent = [
 },
 
     {
-        question2: 'String values must be enclosed within _______ when being assigned to variables.', 
-        answers2: {
+        question: 'String values must be enclosed within _______ when being assigned to variables.', 
+        answers: {
             1: 'commas',
             2: 'curly brackets',
             3: 'quotes',
@@ -63,8 +65,8 @@ var quizContent = [
 },
 
     {   
-        question2: 'A very useful tool used during development and debugging for printing content to the debugger is:', 
-        answers2: {
+        question: 'A very useful tool used during development and debugging for printing content to the debugger is:', 
+        answers: {
             1: 'JavaScript',
             2: 'terminal / bash',
             3: 'for loops',
@@ -73,6 +75,7 @@ var quizContent = [
         correctAnswer: 4
 
 }];
+
 
 // start timer at 75secs when the start button is clicked 
 function startQuiz(){
@@ -85,32 +88,32 @@ function startQuiz(){
     if (quizTime === 0) {
         clearInterval(quizTime);
     }
-    storeHighscore();
+
+    window.location.href = "./questions.html"
+    // displayQAndA();
 }
 
 
-// when user clicks the correct answer, the question and answer choices change and time decrements if user answers incorrectly
-function detectAnswer(event) {
-    event.preventDefault();
-
-    if (event.target.matches(correctAnswer)) {
-      question.innerHTML = 'The condition in an if / else statement is enclose within ______.'
-        // display correct messaging and also change answer choices -- need variable help first 
-    } else {
-        timeStart - 15; 
-        // display wrong message and still change question and answer 
+function displayQAndA(){
+    for (var i = 0; i < quizContent.length; i++) {
+        question.textContent = quizContent[i].question;
+        answerChoice1.textContent = quizContent[i].answers[1];
+        answerChoice2.textContent = quizContent[i].answers[2];
+        answerChoice3.textContent = quizContent[i].answers[3];
+        answerChoice4.textContent = quizContent[i].answers[4];
     }
-  };
+}
+console.log(document.querySelector(".answer-choice1"));
 
 //   console.log(startBtn);
-//   console.log(instructions);
+//   console.log(answerBtn);
 //   console.log(submitBtn);
+//   console.log(goBackBtn);
+//   console.log(clearBtn);
 //   console.log(title);
+//   console.log(instructions);
 //   console.log(timer);
 //   console.log(question);
-//   console.log(answerBtn);
-//   console.log(correctAnswer);
-//   console.log(userInput);
 
 
 // startBtn.addEventListener("click", startQuiz;
@@ -139,5 +142,5 @@ function clearHighscores(event){
 }
 
 // submitBtn.addEventListener("click", storeHighscore);
-goBackBtn.addEventListener("click", goBack);
-clearBtn.addEventListener("click", clearHighscores);
+// goBackBtn.addEventListener("click", goBack);
+// clearBtn.addEventListener("click", clearHighscores);
