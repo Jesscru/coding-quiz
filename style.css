@@ -37,7 +37,10 @@ margin: 0;
 
 
 /* styling index.html */
-
+.instrucions {
+    width: 65%;
+    margin-left: 20%;
+}
 
 
 
