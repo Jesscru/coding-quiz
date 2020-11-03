@@ -68,16 +68,7 @@ function storeHighscore(event, quizTime){
     var clearBtn = document.querySelector("#clear");
     var heading = document.querySelector('.all-done');
 
-    userInput.remove();
-    document.querySelector(".input-text").textContent = '';
-    document.querySelector('.final-score').remove();
-    userInitials.textContent = userInput.value;
-    heading.textContent = 'Highscores'
-    userInitials.style.background = "#D8BFD8";
-    userInitials.style.width = "50%";
-    submitBtn.style.display = "none";
-    goBackBtn.style.visibility = "initial";
-    clearBtn.style.visibility = "initial"; 
+    
 }
 
 submitBtn.addEventListener("click", storeHighscore);
