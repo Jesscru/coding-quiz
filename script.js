@@ -1,12 +1,14 @@
 // variables to get html content 
 var startBtn = document.querySelector(".button");
-var instructions = document.getElementsByClassName("instructions");
+var answerBtn = document.getElementsByClassName("answer-choices");
+var submitBtn = document.querySelector(".submit-button");
 var title = document.querySelector(".title");
+var instructions = document.getElementsByClassName("instructions");
 var timer = document.getElementsByClassName("time-display");
 var question = document.getElementsByClassName("question");
-var answerBtn = document.getElementsByClassName("answer-choices");
 var correctAnswer = document.getElementById("true");
 var userInput = document.querySelector(".input")
+
 
 // other variables 
 var timeStart = 75000;
@@ -43,6 +45,7 @@ function detectAnswer(event) {
 
   console.log(startBtn);
   console.log(instructions);
+  console.log(submitBtn);
   console.log(title);
   console.log(timer);
   console.log(question);
@@ -51,12 +54,30 @@ function detectAnswer(event) {
   console.log(userInput);
 
 
-// startBtn.addEventListener("click", startQuiz());
-// answerBtn.addEventListener("click", detectAnswer());
+// startBtn.addEventListener("click", startQuiz;
+// answerBtn.addEventListener("click", detectAnswer;
 
 
 function storeHighscore(event, quizTime){
     event.preventDefault();
 
-    localStorage.setItem('userInput.value', )
+    localStorage.setItem(userInput.value, quizTime);
+
+    var userInitials = document.querySelector(".stored-user-initials");
+    var goBackBtn = document.querySelector("#go-back");
+    var clearBtn = document.querySelector("#clear");
+    var heading = document.querySelector('.all-done');
+
+    userInput.remove();
+    document.querySelector(".input-text").textContent = '';
+    document.querySelector('.final-score').remove();
+    userInitials.textContent = userInput.value;
+    heading.textContent = 'Highscores'
+    userInitials.style.background = "#D8BFD8";
+    userInitials.style.width = "50%";
+    submitBtn.style.display = "none";
+    goBackBtn.style.visibility = "initial";
+    clearBtn.style.visibility = "initial"; 
 }
+
+submitBtn.addEventListener("click", storeHighscore);
