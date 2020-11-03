@@ -3,6 +3,9 @@ var startButton = document.getElementsByClassName('button');
 var instructions = document.getElementsByClassName('instructions');
 var title = document.getElementsByClassName('title');
 var timer = document.querySelector('#time-display');
+var question = document.getElementsByClassName('question');
+var answerBtn = document.getElementsByClassName('answer-choices');
+var correctAnswer = document.querySelector('#true');
 
 // other variables 
 var timeStart = 75000;
@@ -20,7 +23,13 @@ startButton.onclick = function startQuiz(){
         clearInterval(quizTime);
     }
 }
+// console.log(correctAnswer);
 
-console.log(changeToSec);
+answerBtn.addEventListener("click", function(event) {
+    event.preventDefault();
 
+    if (event.target.matches(correctAnswer) {
+      question.textContent = 'The condition in an if / else statement is enclose within ______.'
+    }
+  });
 
