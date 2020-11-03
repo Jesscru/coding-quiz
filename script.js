@@ -1,8 +1,8 @@
 // variables to get html content 
-var startButton = document.querySelector('.title');
-var instructions = document.querySelector('.instructions');
-var title = document.querySelector('.title');
-var timer = document.querySelector('#time-display')
+var startButton = document.getElementsByClassName('button');
+var instructions = document.getElementsByClassName('instructions');
+var title = document.getElementsByClassName('title');
+var timer = document.querySelector('#time-display');
 
 // other variables 
 var timeStart = 75000;
@@ -18,10 +18,12 @@ function startQuiz(){
     if (quizTime === 0) {
         clearInterval(quizTime);
     }
-    console.log(changeToSec);
-    console.log(timeStart);
 }
 
+    console.log(startButton);
+    console.log(instructions); 
+    console.log(title); 
+    console.log(timer); 
 
-startButton.addEventListener('click', startQuiz());
+// startButton.addEventListener('click', startQuiz());
 
