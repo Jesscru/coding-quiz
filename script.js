@@ -36,7 +36,6 @@ function startQuiz(){
 
 // when user clicks the correct answer, the question and answer choices change and time decrements if user answers incorrectly
 function detectAnswer(event) {
-    
     event.preventDefault();
 
     if (event.target.matches(correctAnswer)) {
@@ -81,6 +80,7 @@ function clearHighscores(event){
     event.preventDefault();
 
     localStorage.clear();
+
 }
 
 // submitBtn.addEventListener("click", storeHighscore);

@@ -18,10 +18,7 @@ margin: 0;
 .submit-button,
 #go-back, 
 #clear,
-.answer-choice1,
-.answer-choice2,
-.answer-choice3, 
-.answer-choice4 {
+.answer-choice {
     background-color: rgb(93, 5, 175);
     color: white;
     font-size: 16px;
