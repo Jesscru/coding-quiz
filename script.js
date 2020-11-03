@@ -24,3 +24,4 @@ function startQuiz(){
 
 
 startButton.addEventListener('click', startQuiz());
+
