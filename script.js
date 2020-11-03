@@ -23,6 +23,7 @@ function startQuiz(){
     if (quizTime === 0) {
         clearInterval(quizTime);
     }
+    storeHighscore();
 }
 
 
@@ -54,8 +55,8 @@ function detectAnswer(event) {
 // answerBtn.addEventListener("click", detectAnswer());
 
 
-// function storeHighscore(event){
-//     event.preventDefault();
+function storeHighscore(event, quizTime){
+    event.preventDefault();
 
-//     localStorage.setItem()
-// }
+    localStorage.setItem('userInput.value', )
+}
