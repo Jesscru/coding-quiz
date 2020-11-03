@@ -2,12 +2,17 @@
 var startBtn = document.querySelector(".button");
 var answerBtn = document.getElementsByClassName("answer-choices");
 var submitBtn = document.querySelector(".submit-button");
+var goBackBtn = document.querySelector("#go-back");
+var clearBtn = document.querySelector("#clear");
+
 var title = document.querySelector(".title");
 var instructions = document.getElementsByClassName("instructions");
 var timer = document.getElementsByClassName("time-display");
 var question = document.getElementsByClassName("question");
 var correctAnswer = document.getElementById("true");
 var userInput = document.querySelector(".input")
+var userInitials = document.querySelector(".stored-user-initials");
+var allDone = document.querySelector('.all-done');
 
 
 // other variables 
@@ -43,32 +48,41 @@ function detectAnswer(event) {
     }
   };
 
-  console.log(startBtn);
-  console.log(instructions);
-  console.log(submitBtn);
-  console.log(title);
-  console.log(timer);
-  console.log(question);
-  console.log(answerBtn);
-  console.log(correctAnswer);
-  console.log(userInput);
+//   console.log(startBtn);
+//   console.log(instructions);
+//   console.log(submitBtn);
+//   console.log(title);
+//   console.log(timer);
+//   console.log(question);
+//   console.log(answerBtn);
+//   console.log(correctAnswer);
+//   console.log(userInput);
 
 
 // startBtn.addEventListener("click", startQuiz;
 // answerBtn.addEventListener("click", detectAnswer;
 
-
+// stores highscore in highscores.html
 function storeHighscore(event, quizTime){
     event.preventDefault();
 
     localStorage.setItem(userInput.value, quizTime);
-
-    var userInitials = document.querySelector(".stored-user-initials");
-    var goBackBtn = document.querySelector("#go-back");
-    var clearBtn = document.querySelector("#clear");
-    var heading = document.querySelector('.all-done');
-
-    
 }
 
-submitBtn.addEventListener("click", storeHighscore);
+// takes back to homepage when go back button is clicked
+function goBack(event) {
+    event.preventDefault();
+
+    window.location.href = "./index.html"
+}
+
+// clears local storage when clear highscores button is clicked
+function clearHighscores(event){
+    event.preventDefault();
+
+    localStorage.clear();
+}
+
+// submitBtn.addEventListener("click", storeHighscore);
+goBackBtn.addEventListener("click", goBack);
+clearBtn.addEventListener("click", clearHighscores);
