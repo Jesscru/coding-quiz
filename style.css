@@ -1,8 +1,11 @@
+/* styling all files */
+
 body {
     /* need to change this font to one that matches example a little closer */
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 18px;
     margin: 20px;
+    text-align: center;
 }
 
 #time-display {
@@ -10,32 +13,24 @@ float: right;
 margin: 0;
 }
 
- .title,
- .input, 
- .button, 
- .instructions,
- .question {
-     text-align: center;
-     width: auto;
-     margin: 25px auto;
- }
-
-.instructions {
-    /* centering not working for some reason  */
-    margin: auto;
-    text-align: center;
-}
-
 .button,
 .answer-choices {
-    background-color: blueviolet;
+    background-color: rgb(107, 9, 199);
     color: white;
     padding: 10px;
-    width: auto;
     border-radius: 10px;
     border: none;
-    margin: 5px;
 }
+
+
+
+
+/* styling index.html */
+
+
+
+
+/* styling questions.html */
 
 .list {
     display: block;
