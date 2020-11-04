@@ -1,18 +1,18 @@
 // button variables to access html content 
 var startBtn = document.querySelector(".button");
 var answerBtn = document.getElementsByClassName("answer-choices");
-var submitBtn = document.querySelector(".submit-button");
-var goBackBtn = document.querySelector("#go-back");
-var clearBtn = document.querySelector("#clear");
+var submitBtn = document.getElementsByClassName("submit-button");
+var goBackBtn = document.getElementById("go-back");
+var clearBtn = document.getElementById("clear");
 
 // variables to access other html elements
 var title = document.querySelector(".title");
 var instructions = document.getElementsByClassName("instructions");
-var timer = document.getElementsByClassName("time-display");
-var question = document.getElementsByClassName("question");
-var userInput = document.querySelector(".input")
-var userInitials = document.querySelector(".stored-user-initials");
-var allDone = document.querySelector('.all-done');
+var timer = document.querySelector(".time-display");
+var askQuestion = document.getElementById("question");
+// var userInput = document.querySelector(".input")
+// var userInitials = document.querySelector(".stored-user-initials");
+// var allDone = document.querySelector('.all-done');
 
 // js exclusive variables
 var timeStart = 75000;
@@ -22,56 +22,56 @@ var changeToSec = timeStart / 1000;
 var quizContent = [
     { 
         question: 'Commonly used data types DO NOT include', 
-        answers: {
-            1: 'strings',
-            2: 'booleans',
-            3: 'alerts',
-            4: 'numbers'
-    }, 
+        answers: [
+            '1. strings',
+            '2. booleans',
+            '3. alerts',
+            '4. numbers'
+    ], 
         correctAnswer: 3
 },
 
     {
         question: 'The condition of an if / else statement is enclosed within _______.', 
-        answers: {
-            1: 'quotes',
-            2: 'curly brackets',
-            3: 'parentheses',
-            4: 'square brackets'
-    }, 
+        answers: [
+            '1. quotes',
+            '2. curly brackets',
+            '3. parentheses',
+            '4. square brackets'
+    ], 
         correctAnswer: 3
 },
     
     {
         question: 'Arrays in JavaScripts can be used to store _______. ', 
-        answers: {
-            1: 'numbers and strings',
-            2: 'other arrays',
-            3: 'booleans',
-            4: 'all of the above'
-    }, 
+        answers: [
+            '1. numbers and strings',
+            '2. other arrays',
+            '3. booleans',
+            '4. all of the above'
+    ], 
         correctAnswer: 4
 },
 
     {
         question: 'String values must be enclosed within _______ when being assigned to variables.', 
-        answers: {
-            1: 'commas',
-            2: 'curly brackets',
-            3: 'quotes',
-            4: 'parentheses'
-    }, 
+        answers: [
+            '1. commas',
+            '2. curly brackets',
+            '3. quotes',
+            '4. parentheses'
+    ], 
         correctAnswer: 3
 },
 
     {   
         question: 'A very useful tool used during development and debugging for printing content to the debugger is:', 
-        answers: {
-            1: 'JavaScript',
-            2: 'terminal / bash',
-            3: 'for loops',
-            4: 'console.log'
-    }, 
+        answers: [
+            '1. JavaScript',
+            '2. terminal / bash',
+            '3. for loops',
+            '4. console.log'
+    ], 
         correctAnswer: 4
 
 }];
@@ -94,16 +94,21 @@ function startQuiz(){
 }
 
 
+
 function displayQAndA(){
     for (var i = 0; i < quizContent.length; i++) {
-        question.textContent = quizContent[i].question;
-        answerChoice1.textContent = quizContent[i].answers[1];
-        answerChoice2.textContent = quizContent[i].answers[2];
-        answerChoice3.textContent = quizContent[i].answers[3];
-        answerChoice4.textContent = quizContent[i].answers[4];
+        askQuestion.textContent = quizContent[i].question;
+        // answerChoice1.textContent = quizContent[i].answers[1];
+        // answerChoice2.textContent = quizContent[i].answers[2];
+        // answerChoice3.textContent = quizContent[i].answers[3];
+        // answerChoice4.textContent = quizContent[i].answers[4];
+        console.log(quizContent[i].question);
+        
     }
 }
-console.log(document.querySelector(".answer-choice1"));
+
+displayQAndA();
+
 
 //   console.log(startBtn);
 //   console.log(answerBtn);
@@ -116,31 +121,31 @@ console.log(document.querySelector(".answer-choice1"));
 //   console.log(question);
 
 
-// startBtn.addEventListener("click", startQuiz;
-// answerBtn.addEventListener("click", detectAnswer;
+// startBtn.addEventListener("click", startQuiz);
+// // answerBtn.addEventListener("click", detectAnswer);
 
-// stores highscore in highscores.html
-function storeHighscore(event, quizTime){
-    event.preventDefault();
+// // stores highscore in highscores.html
+// function storeHighscore(event, quizTime){
+//     event.preventDefault();
 
-    localStorage.setItem(userInput.value, quizTime);
-}
+//     localStorage.setItem(userInput.value, quizTime);
+// }
 
-// takes back to homepage when go back button is clicked
-function goBack(event) {
-    event.preventDefault();
+// // takes back to homepage when go back button is clicked
+// function goBack(event) {
+//     event.preventDefault();
 
-    window.location.href = "./index.html"
-}
+//     window.location.href = "./index.html"
+// }
 
-// clears local storage when clear highscores button is clicked
-function clearHighscores(event){
-    event.preventDefault();
+// // clears local storage when clear highscores button is clicked
+// function clearHighscores(event){
+//     event.preventDefault();
 
-    localStorage.clear();
+//     localStorage.clear();
 
-}
+// }
 
-// submitBtn.addEventListener("click", storeHighscore);
+// // submitBtn.addEventListener("click", storeHighscore);
 // goBackBtn.addEventListener("click", goBack);
 // clearBtn.addEventListener("click", clearHighscores);

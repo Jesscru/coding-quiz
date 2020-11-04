@@ -4,28 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="./highscores.html" type="text/html">
+    <link href="./questions.html" type="text/html">
     <link href="style.css" rel="stylesheet">
     <title>Coding Quiz Challenge</title>
 </head>
 <body>
 
-    <div class="time-display">Time: 0</div>
+    <section class="begin-here">
 
-    <div class="highscores">
-        <div><a href="highscores.html">View Highscores</div></a>
-    </div>
+        <div class="time-display">Time: 0</div>
 
-    <main>
-
-        <div class="container">
-
-            <h1 class="title">Coding Quiz Challenge</h1>
-            <p class="instrucions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-            <button class="button">Start Quiz</button>
-        
+        <div class="highscores">
+            <div><a href="highscores.html">View Highscores</div></a>
         </div>
 
-    </main>
+        <main>
+
+            <div class="container">
+
+                <h1 class="title">Coding Quiz Challenge</h1>
+                <p class="instrucions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+                <button class="button">Start Quiz</button>
+            
+            </div>
+
+        </main>
+
+    </section>
+
+    <section class="questions-begin">
+
+        <div class="timer">
+            <p id="time-display">Time: 0</p>
+        </div>
+    
+        <div class="highscores">
+            <div><a href="highscores.html">View Highscores</div></a>
+        </div>
+        
+        <div class="container">
+    
+            <h1 id="question"></h1>
+            
+            <div>
+    
+                <ul class="list">
+                    <li><button class="answer-choice1"></button></li>
+                    <li><button class="answer-choice2"></button></li>
+                    <li><button class="answer-choice3"></button></li>
+                    <li><button class="answer-choice4"></button></li>
+                </ul>
+    
+            </div>
+    
+        </div>
+    </section>
+
+    <section class="highscores-page">
+
+        <div class="highscore-container"></div>
+
+            <h1>Highscores</h1>
+            <p class="stored-user-initials"></p>
+            <button id="go-back">Go Back</button>
+            <button id="clear">Clear Highscores</button>
+    
+        </div>
+        
+    </section>
     
     <script src="script.js"></script>
 </body>
