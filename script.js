@@ -1,6 +1,6 @@
 // button variables to access html content 
 var startBtn = document.querySelector(".button");
-var answerBtn = document.getElementsByClassName("answer-choices");
+var answerBtn = document.querySelector(".answer-choices");
 var submitBtn = document.getElementsByClassName("submit-button");
 var goBackBtn = document.getElementById("go-back");
 var clearBtn = document.getElementById("clear");
