@@ -1,9 +1,9 @@
 // button variables to access html content 
 var startBtn = document.querySelector(".button");
+var answerBtn0 = document.querySelector(".answer-choice0");
 var answerBtn1 = document.querySelector(".answer-choice1");
 var answerBtn2 = document.querySelector(".answer-choice2");
 var answerBtn3 = document.querySelector(".answer-choice3");
-var answerBtn4 = document.querySelector(".answer-choice4");
 var submitBtn = document.getElementById("submit-button");
 var goBackBtn = document.getElementById("go-back");
 var clearBtn = document.getElementById("clear");
@@ -92,34 +92,22 @@ function startQuiz(){
     }
 
     window.location.href = "./questions.html"
-    // displayQAndA();
 }
 
 
-// function displayQAndA(quizContent){ 
+function displayQAndA(quizContent){ 
 
-//     for (var i = 0; i < quizContent.length; i++) {
-//         askQuestion.textContent = quizcontent[i].question;
-//         answerChoice1.textContent = quizContent[i].answers[1];
-//         answerChoice2.textContent = quizContent[i].answers[2];
-//         answerChoice3.textContent = quizContent[i].answers[3];
-//         answerChoice4.textContent = quizContent[i].answers[4];
-//     }
-//     console.log(quizContent);
-// }
+    for (var i = 0; i < quizContent.length; i++) {
+        askQuestion.textContent = quizContent[i].question;
+        answerBtn0.textContent = quizContent[i].answers[0];
+        answerBtn1.textContent = quizContent[i].answers[1];
+        answerBtn2.textContent = quizContent[i].answers[2];
+        answerBtn3.textContent = quizContent[i].answers[3];
+    }
+}
 
-
-
-  console.log(startBtn);
-  console.log(answerBtn1);
-  console.log(submitBtn);
-  console.log(goBackBtn);
-  console.log(clearBtn);
-  console.log(title);
-  console.log(instructions);
-  console.log(timer);
-  console.log(question);
-
+displayQAndA(quizContent);
+// console.log(quizContent[0].answers[1]);
 
 // startBtn.addEventListener("click", startQuiz);
 // // answerBtn.addEventListener("click", detectAnswer);

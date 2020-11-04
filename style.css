@@ -15,10 +15,10 @@ margin: 0;
 }
 
 .button,
+.answer-choice0,
 .answer-choice1,
 .answer-choice2,
 .answer-choice3,
-.answer-choice4,
 .submit-button,
 #go-back, 
 #clear {
