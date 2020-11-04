@@ -43,7 +43,6 @@ body {
 
 /* styling for begin-here sections  */
 .begin-page{
-    display: initial;
 }
 
 .instrucions {
@@ -82,7 +81,7 @@ body {
 
 /* styling for user-entry-page section */
 .user-entry-page { 
-    visibility: hidden;
+    display: none;
 }
 
 
@@ -91,7 +90,7 @@ body {
 
 /* styling for view-highscores-page section */
 .view-highscores-page {
-    visibility: hidden;
+    display: none;
 }
 
 .highscore-container {

@@ -12,6 +12,10 @@ var clearBtn = document.getElementById("clear");
 var title = document.querySelector(".title");
 var instructions = document.getElementById('instructions');
 var timer = document.querySelector(".time-display");
+var beginHere = document.querySelector(".begin-here");
+var beginQuestions = document.querySelector(".questions-begin-page");
+var userEntry = document.querySelector(".user-entry-page");
+var highscorePage = document.querySelector(".view-highscores-page");
 var askQuestion = document.getElementById("question");
 var userInput = document.querySelector(".input");
 var userInitials = document.querySelector(".stored-user-initials");
@@ -92,8 +96,9 @@ var quizContent = [
 
     }, 1000)
 
-    document.body.querySelector(".begin-here").style.display = 'none';
-    document.body.querySelector(".questions-begin-page").style.display = 'default';
+    beginHere.style.display = 'none';
+    beginQuestions.style.display = '';
+    displayQAndA(quizContent);
 }
 
 function displayQAndA(quizContent){ 
