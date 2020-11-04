@@ -117,25 +117,28 @@ function displayQAndA (quizContent){
 }
 
 
-// // stores highscore in highscores.html
-// function storeHighscore(event, quizTime){
-//     event.preventDefault();
+// stores highscore in highscores.html
+function storeHighscore(event, quizTime){
+    highscorePage.style.visibility = 'initial';
+    userEntry.style.display = 'none';
 
-//     localStorage.setItem(userInput.value, quizTime);
-// }
+    event.preventDefault();
+    
+    localStorage.setItem(userInput.value, quizTime);
+}
 
-// // takes back to homepage when go back button is clicked
-// function goBack(event) {
-//     event.preventDefault();
-// }
+// takes back to homepage when go back button is clicked
+function goBack(event) {
+    event.preventDefault();
+}
 
-// // clears local storage when clear highscores button is clicked
-// function clearHighscores(event){
-//     event.preventDefault();
+// clears local storage when clear highscores button is clicked
+function clearHighscores(event){
+    event.preventDefault();
 
-//     localStorage.clear();
+    localStorage.clear();
 
-// }
+}
 
 
 // event listeners and function calls
