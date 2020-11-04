@@ -1,18 +1,20 @@
 // button variables to access html content 
 var startBtn = document.querySelector(".button");
-var answerBtn = document.querySelector(".answer-choices");
-var submitBtn = document.getElementsByClassName("submit-button");
+var answerBtn1 = document.querySelector(".answer-choice1");
+var answerBtn2 = document.querySelector(".answer-choice2");
+var answerBtn3 = document.querySelector(".answer-choice3");
+var answerBtn4 = document.querySelector(".answer-choice4");
+var submitBtn = document.getElementById("submit-button");
 var goBackBtn = document.getElementById("go-back");
 var clearBtn = document.getElementById("clear");
 
 // variables to access other html elements
 var title = document.querySelector(".title");
-var instructions = document.getElementsByClassName("instructions");
+var instructions = document.getElementById('instructions');
 var timer = document.querySelector(".time-display");
 var askQuestion = document.getElementById("question");
-// var userInput = document.querySelector(".input")
-// var userInitials = document.querySelector(".stored-user-initials");
-// var allDone = document.querySelector('.all-done');
+var userInput = document.querySelector(".input");
+var userInitials = document.querySelector(".stored-user-initials");
 
 // js exclusive variables
 var timeStart = 75000;
@@ -94,31 +96,29 @@ function startQuiz(){
 }
 
 
+// function displayQAndA(quizContent){ 
 
-function displayQAndA(){
-    for (var i = 0; i < quizContent.length; i++) {
-        askQuestion.textContent = quizContent[i].question;
-        // answerChoice1.textContent = quizContent[i].answers[1];
-        // answerChoice2.textContent = quizContent[i].answers[2];
-        // answerChoice3.textContent = quizContent[i].answers[3];
-        // answerChoice4.textContent = quizContent[i].answers[4];
-        console.log(quizContent[i].question);
-        
-    }
-}
-
-displayQAndA();
+//     for (var i = 0; i < quizContent.length; i++) {
+//         askQuestion.textContent = quizcontent[i].question;
+//         answerChoice1.textContent = quizContent[i].answers[1];
+//         answerChoice2.textContent = quizContent[i].answers[2];
+//         answerChoice3.textContent = quizContent[i].answers[3];
+//         answerChoice4.textContent = quizContent[i].answers[4];
+//     }
+//     console.log(quizContent);
+// }
 
 
-//   console.log(startBtn);
-//   console.log(answerBtn);
-//   console.log(submitBtn);
-//   console.log(goBackBtn);
-//   console.log(clearBtn);
-//   console.log(title);
-//   console.log(instructions);
-//   console.log(timer);
-//   console.log(question);
+
+  console.log(startBtn);
+  console.log(answerBtn1);
+  console.log(submitBtn);
+  console.log(goBackBtn);
+  console.log(clearBtn);
+  console.log(title);
+  console.log(instructions);
+  console.log(timer);
+  console.log(question);
 
 
 // startBtn.addEventListener("click", startQuiz);
