@@ -80,20 +80,21 @@ var quizContent = [
 
 
 // start timer at 75secs when the start button is clicked 
-function startQuiz(){
+ function startQuiz(){
   
     var quizTime = setInterval(function(){
-        timeStart--;
+        changeToSec--;
         timer.textContent = 'Time: ' + changeToSec;
-    }, 0)
 
-    if (quizTime === 0) {
-        clearInterval(quizTime);
-    }
+        if (timeStart === 0) {
+            clearInterval(quizTime);
+        }
 
-    window.location.href = "./questions.html"
+    }, 1000)
+
+    document.body.querySelector(".begin-here").style.display = 'none';
+    document.body.querySelector(".questions-begin-page").style.display = 'default';
 }
-
 
 function displayQAndA(quizContent){ 
 
@@ -106,11 +107,8 @@ function displayQAndA(quizContent){
     }
 }
 
-displayQAndA(quizContent);
-// console.log(quizContent[0].answers[1]);
 
-// startBtn.addEventListener("click", startQuiz);
-// // answerBtn.addEventListener("click", detectAnswer);
+// answerBtn.addEventListener("click", detectAnswer);
 
 // // stores highscore in highscores.html
 // function storeHighscore(event, quizTime){
@@ -134,6 +132,11 @@ displayQAndA(quizContent);
 
 // }
 
-// // submitBtn.addEventListener("click", storeHighscore);
+
+// event listeners and function calls
+startBtn.addEventListener("click", startQuiz);
+// submitBtn.addEventListener("click", storeHighscore);
 // goBackBtn.addEventListener("click", goBack);
 // clearBtn.addEventListener("click", clearHighscores);
+
+displayQAndA(quizContent);
