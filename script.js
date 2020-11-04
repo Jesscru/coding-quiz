@@ -82,6 +82,11 @@ var quizContent = [
 
 }];
 
+function hideElements(){
+    beginQuestions.style.visibility = 'hidden';
+    userEntry.style.visibility = 'hidden';
+    highscorePage.style.visibility = 'hidden';
+}
 
 // start timer at 75secs when the start button is clicked 
  function startQuiz(){
@@ -89,19 +94,18 @@ var quizContent = [
     var quizTime = setInterval(function(){
         changeToSec--;
         timer.textContent = 'Time: ' + changeToSec;
-
-        if (timeStart === 0) {
+        
+        if (changeToSec === 0) {
             clearInterval(quizTime);
         }
 
     }, 1000)
 
     beginHere.style.display = 'none';
-    beginQuestions.style.display = '';
-    displayQAndA(quizContent);
+    beginQuestions.style.visibility = 'initial';
 }
 
-function displayQAndA(quizContent){ 
+function displayQAndA (quizContent){ 
 
     for (var i = 0; i < quizContent.length; i++) {
         askQuestion.textContent = quizContent[i].question;
@@ -113,8 +117,6 @@ function displayQAndA(quizContent){
 }
 
 
-// answerBtn.addEventListener("click", detectAnswer);
-
 // // stores highscore in highscores.html
 // function storeHighscore(event, quizTime){
 //     event.preventDefault();
@@ -125,8 +127,6 @@ function displayQAndA(quizContent){
 // // takes back to homepage when go back button is clicked
 // function goBack(event) {
 //     event.preventDefault();
-
-//     window.location.href = "./index.html"
 // }
 
 // // clears local storage when clear highscores button is clicked
@@ -144,4 +144,5 @@ startBtn.addEventListener("click", startQuiz);
 // goBackBtn.addEventListener("click", goBack);
 // clearBtn.addEventListener("click", clearHighscores);
 
+hideElements();
 displayQAndA(quizContent);

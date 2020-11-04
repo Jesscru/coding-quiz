@@ -58,7 +58,7 @@ body {
 
 /* styling for questions-begin section */
 .questions-begin-page {
-    display: none;
+    visibility: visible;
 }
 
 .question {
@@ -81,7 +81,7 @@ body {
 
 /* styling for user-entry-page section */
 .user-entry-page { 
-    display: none;
+    visibility: visible;
 }
 
 
@@ -90,7 +90,7 @@ body {
 
 /* styling for view-highscores-page section */
 .view-highscores-page {
-    display: none;
+    visibility: visible;
 }
 
 .highscore-container {
