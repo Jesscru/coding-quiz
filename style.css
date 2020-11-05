@@ -77,6 +77,13 @@ body {
     margin-left: 5%;
 }
 
+.pop-up-verdict,
+.verdict {
+    display: block;
+    margin-top: 220px;
+    visibility: visible;
+}
+
 
 
 
