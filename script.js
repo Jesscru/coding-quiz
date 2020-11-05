@@ -94,7 +94,8 @@ function hideElements(){
 
 // start timer at 75secs when the start button is clicked 
  function startQuiz(){
-  
+    displayQ1(quizContent);
+
     var quizTime = setInterval(function(){
         changeToSec--;
         timer.textContent = 'Time: ' + changeToSec;
@@ -105,8 +106,9 @@ function hideElements(){
 
     }, 1000)
 
-    beginHere.style.display = 'none';
+    beginHere.style.visibility = 'hidden';
     beginQuestions.style.visibility = 'initial';
+    
 }
 
 function displayQ1(quizContent){ 
@@ -119,21 +121,17 @@ function displayQ1(quizContent){
         answerBtn3.textContent = quizContent[0].answers[2];
         answerBtn4.textContent = quizContent[0].answers[3];
     }
-    
-  
-    answerBtn3.addEventListener('click', function(event){
-        if (event.target.matches(".answer-choice2")){
-            popUp.style.visibility = 'initial';
-            displayVerdict.textContent = 'Correct! Keep it up! :)';
+
+    document.querySelector('.list').addEventListener('click', function(event){
+        if (event.target.matches(".answer-choice2")) {
+            correctAnswer();
             displayQ2(quizContent);
-        } else if (event.target.matches(".answer-choice0") || event.target.matches(".answer-choice1") || event.target.matches(".answer-choice3")) {
-            popUp.style.visibility = 'initial';
-            displayVerdict.textContent = 'Incorrect! That\'s -15 points :(';
+        } else {
+            incorrectAnswer();
             displayQ2(quizContent);
-            changeToSec - 15;
         }
-        
     })
+  
 }
 
 
@@ -148,18 +146,14 @@ function displayQ2(quizContent){
         answerBtn4.textContent = quizContent[1].answers[3];
     }
 
-    answerBtn2.addEventListener('click', function(event){
-        if (event.target.matches(".answer-choice1")){
-            popUp.style.visibility = 'initial';
-            displayVerdict.textContent = 'Correct! Keep it up! :)';
+    document.querySelector('.list').addEventListener('click', function(event){
+        if (event.target.matches(".answer-choice1")) {
+            correctAnswer();
+            displayQ4(quizContent);
+        } else {
+            incorrectAnswer();
             displayQ3(quizContent);
-        } else if (event.target.matches(".answer-choice0") || event.target.matches(".answer-choice2") || event.target.matches(".answer-choice3")) {
-            popUp.style.visibility = 'initial';
-            displayVerdict.textContent = 'Incorrect! That\'s -15 points :(';
-            displayQ3(quizContent);
-            changeToSec - 15;
         }
-        
     })
 }
 
@@ -174,20 +168,18 @@ function displayQ3(quizContent){
         answerBtn4.textContent = quizContent[2].answers[3];
     }
 
-    answerBtn4.addEventListener('click', function(event){
-        if (event.target.matches(".answer-choice3")){
-            popUp.style.visibility = 'initial';
-            displayVerdict.textContent = 'Correct! Keep it up! :)';
+    document.querySelector('.list').addEventListener('click', function(event){
+        if (event.target.matches(".answer-choice3")) {
+            correctAnswer();
             displayQ4(quizContent);
-        } else if (event.target.matches(".answer-choice0") || event.target.matches(".answer-choice2") || event.target.matches(".answer-choice1")) {
-            popUp.style.visibility = 'initial';
-            displayVerdict.textContent = 'Incorrect! That\'s -15 points :(';
+        } else {
+            incorrectAnswer();
             displayQ4(quizContent);
-            changeToSec - 15;
         }
-        
     })
 }
+
+
 
 function displayQ4(quizContent){ 
     askQuestion.textContent = quizContent[3].question;
@@ -200,18 +192,14 @@ function displayQ4(quizContent){
         answerBtn4.textContent = quizContent[3].answers[3];
     }
 
-    answerBtn3.addEventListener('click', function(event){
-        if (event.target.matches(".answer-choice2")){
-            popUp.style.visibility = 'initial';
-            displayVerdict.textContent = 'Correct! Keep it up! :)';
+    document.querySelector('.list').addEventListener('click', function(event){
+        if (event.target.matches(".answer-choice2")) {
+            correctAnswer();
             displayQ5(quizContent);
-        } else if (event.target.matches(".answer-choice0") || event.target.matches(".answer-choice1") || event.target.matches(".answer-choice3")) {
-            popUp.style.visibility = 'initial';
-            displayVerdict.textContent = 'Incorrect! That\'s -15 points :(';
+        } else {
+            incorrectAnswer();
             displayQ5(quizContent);
-            changeToSec - 15;
         }
-        
     })
 }
 
@@ -226,34 +214,46 @@ function displayQ5(quizContent){
         answerBtn4.textContent = quizContent[4].answers[3];
     }
 
-    answerBtn4.addEventListener('click', function(event){
+    document.querySelector('.list').addEventListener('click', function(event){
         if (event.target.matches(".answer-choice3")){
-            popUp.style.visibility = 'initial';
-            displayVerdict.textContent = 'Correct! Keep it up! :)';
+            correctAnswer();
             storeHighscore(event);
-        } else if (event.target.matches(".answer-choice0") || event.target.matches(".answer-choice2") || event.target.matches(".answer-choice1")) {
-            popUp.style.visibility = 'initial';
-            displayVerdict.textContent = 'Incorrect! That\'s -15 points :(';
-            changeToSec - 15;
+            timer.style.display = 'hidden';
+
+        } else {
+            incorrectAnswer();
             storeHighscore(event);
+            timer.style.display = 'hidden';
         }
         
     })
 }
 
 // stores highscore in highscores.html
-function storeHighscore(event, quizTime){
+function storeHighscore(event, changeToSec){
     userEntry.style.visibility = 'initial';
     beginQuestions.style.display = 'none';
 
+    document.querySelector('.final-score').textContent = 'Your final score is ' + changeToSec;
+
     event.preventDefault();
     
-    localStorage.setItem(userInput.value, quizTime);
+    localStorage.setItem(userInput.value, changeToSec);
+
+    submitBtn.addEventListener("click", function(){
+        userEntry.style.display = 'none';
+        highscorePage.style.visibility = 'initial';
+        userInitials.textContent = userInput.value;
+    });
 }
 
 // takes back to homepage when go back button is clicked
 function goBack(event) {
-    event.preventDefault();
+
+    beginHere.style.visibility = 'initial'; 
+    highscorePage.style.display = 'none';
+    hideElements();
+    startQuiz();
 }
 
 // clears local storage when clear highscores button is clicked
@@ -261,28 +261,37 @@ function clearHighscores(event){
     event.preventDefault();
 
     localStorage.clear();
-
+    userInitials.textContent = '';
 }
 
+function correctAnswer(){
+    displayVerdict.textContent = 'Correct! Keep it up! :)';
+    popUp.style.visibility = 'initial';
+}
+
+function incorrectAnswer(){
+    displayVerdict.textContent = 'Incorrect! That\'s -15 points :(';
+    timeStart - 1500;
+    popUp.style.visibility = 'initial';
+}
 
 // event listeners and function calls
 startBtn.addEventListener("click", startQuiz);
-answerBtn1.addEventListener('click', function(){
-    console.log('Button 1 pushed');
+answerBtn1.addEventListener('click', function(event){
+    console.log(event);
 })
-answerBtn2.addEventListener('click', function(){
-    console.log('Button 2 pushed');
+answerBtn2.addEventListener('click', function(event){
+    console.log(event);
 })
-answerBtn3.addEventListener('click', function(){
-    console.log('Button 3 pushed');
+answerBtn3.addEventListener('click', function(event){
+    console.log(event);
 })
-answerBtn4.addEventListener('click', function(){
-    console.log('Button 4 pushed');
+answerBtn4.addEventListener('click', function(event){
+    console.log(event);
 })
-submitBtn.addEventListener("click", storeHighscore);
+
 goBackBtn.addEventListener("click", goBack);
 clearBtn.addEventListener("click", clearHighscores);
 
-hideElements();
-displayQ1(quizContent);
 
+hideElements();

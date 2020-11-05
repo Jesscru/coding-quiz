@@ -4,6 +4,7 @@ body {
     font-size: 18px;
     margin: 20px;
     text-align: center;
+    position: relative;
 
 }
 
@@ -43,6 +44,7 @@ body {
 
 /* styling for begin-here sections  */
 .begin-page{
+    visibility: visible;
 }
 
 .instrucions {
@@ -61,6 +63,8 @@ body {
     visibility: visible;
     width: 70%;
     padding-left: 15%;
+    position: absolute;
+    top: 0;
 }
 
 .question {
@@ -91,6 +95,9 @@ body {
 /* styling for user-entry-page section */
 .user-entry-page { 
     visibility: visible;
+    padding-left: 35%;
+    position: absolute;
+    top: 30px;
 }
 
 
@@ -100,6 +107,10 @@ body {
 /* styling for view-highscores-page section */
 .view-highscores-page {
     visibility: visible;
+    padding-left: 40%;
+    position: absolute;
+    top: 30px;
+
 }
 
 .highscore-container {
@@ -109,8 +120,8 @@ body {
 
 .stored-user-initials {
     background-color:thistle;
-    width: 40%;
-    margin-left: 400px;
+    width: 10rem;
+    margin-left: 15%;
 }
 
 #go-back,
