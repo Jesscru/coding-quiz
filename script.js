@@ -98,8 +98,8 @@ function hideElements(){
 
     var quizTime = setInterval(function(){
         changeToSec--;
-        timer.textContent = 'Time: ' + changeToSec;
-        
+        timer.textContent = changeToSec;
+
         if (changeToSec === 0) {
             clearInterval(quizTime);
         }
@@ -109,9 +109,9 @@ function hideElements(){
     beginHere.style.visibility = 'hidden';
     beginQuestions.style.visibility = 'initial';
     viewHighscores.style.visibility = 'hidden';
-    
 }
 
+// show the first question in the object and loop through the answers
 function displayQ1(quizContent){ 
 
     askQuestion.textContent = quizContent[0].question;
@@ -123,19 +123,21 @@ function displayQ1(quizContent){
         answerBtn4.textContent = quizContent[0].answers[3];
     }
 
-    document.querySelector('.list').addEventListener('click', function(event){
+    // if user clicks the right answer, moves to next question--no penalties; otherwise it moves to next question and deducts 5 second "points"
+    document.querySelector('.list').addEventListener('click', function(event, incorrectPenalty){
         if (event.target.matches(".answer-choice2")) {
             correctAnswer();
             displayQ2(quizContent);
+
         } else {
-            incorrectAnswer();
+            incorrectAnswer(incorrectPenalty);
             displayQ2(quizContent);
         }
     })
   
 }
 
-
+// show the second question in the object and loop through the answers
 function displayQ2(quizContent){ 
     askQuestion.textContent = quizContent[1].question;
 
@@ -146,17 +148,21 @@ function displayQ2(quizContent){
         answerBtn4.textContent = quizContent[1].answers[3];
     }
 
-    document.querySelector('.list').addEventListener('click', function(event){
+
+// if user clicks the right answer, moves to next question--no penalties; otherwise it moves to next question and deducts 5 second "points"
+    document.querySelector('.list').addEventListener('click', function(event, incorrectPenalty){
         if (event.target.matches(".answer-choice1")) {
             correctAnswer();
             displayQ4(quizContent);
         } else {
-            incorrectAnswer();
+            incorrectAnswer(incorrectPenalty);
             displayQ3(quizContent);
         }
     })
 }
 
+
+// show the third question in the object and loop through the answers
 function displayQ3(quizContent){ 
     askQuestion.textContent = quizContent[2].question;
 
@@ -167,12 +173,13 @@ function displayQ3(quizContent){
         answerBtn4.textContent = quizContent[2].answers[3];
     }
 
-    document.querySelector('.list').addEventListener('click', function(event){
+    // if user clicks the right answer, moves to next question--no penalties; otherwise it moves to next question and deducts 5 second "points"
+    document.querySelector('.list').addEventListener('click', function(event, incorrectPenalty){
         if (event.target.matches(".answer-choice3")) {
             correctAnswer();
             displayQ4(quizContent);
         } else {
-            incorrectAnswer();
+            incorrectAnswer(incorrectPenalty);
             displayQ4(quizContent);
         }
     })
@@ -180,7 +187,7 @@ function displayQ3(quizContent){
 }
 
 
-
+// show the fourth question in the object and loop through the answers
 function displayQ4(quizContent){ 
     askQuestion.textContent = quizContent[3].question;
 
@@ -191,18 +198,20 @@ function displayQ4(quizContent){
         answerBtn4.textContent = quizContent[3].answers[3];
     }
 
-    document.querySelector('.list').addEventListener('click', function(event){
+// if user clicks the right answer, moves to next question--no penalties; otherwise it moves to next question and deducts 5 second "points"
+    document.querySelector('.list').addEventListener('click', function(event, incorrectPenalty){
         if (event.target.matches(".answer-choice2")) {
             correctAnswer();
             displayQ5(quizContent);
         } else {
-            incorrectAnswer();
+            incorrectAnswer(incorrectPenalty);
             displayQ5(quizContent);
         }
     })
 }
 
-function displayQ5(quizContent, quizTime){ 
+// show the fourth question in the object and loop through the answers
+function displayQ5(quizContent, changeToSec){ 
     askQuestion.textContent = quizContent[4].question;
 
     for (var i = 0; i < quizContent[4].answers.length - 1; i++) {
@@ -212,24 +221,29 @@ function displayQ5(quizContent, quizTime){
         answerBtn4.textContent = quizContent[4].answers[3];
     }
 
-    document.querySelector('.list').addEventListener('click', function(event){
+// if user clicks the right answer, moves to next question--no penalties; otherwise it moves to next question and deducts 5 second "points"
+    document.querySelector('.list').addEventListener('click', function(event, incorrectPenalty){
         if (event.target.matches(".answer-choice3")){
             correctAnswer();
             storeHighscore(event);
             timer.style.display = 'hidden';
             localStorage.setItem('stopClock', changeToSec);
-            clearInterval()
-            clearInterval(quizTime);
 
         } else {
-            incorrectAnswer();
+            incorrectAnswer(incorrectPenalty);
             storeHighscore(event);
             timer.style.display = 'hidden';
             localStorage.setItem('stopClock', changeToSec);
-            clearInterval(quizTime);
+
         }  
     })
+
+    if (changeToSec === 0) {
+        clearInterval(quizTime);
+        changeToSec = 0;
+    }
 }
+
 
 // stores highscore in highscores.html
 function storeHighscore(event){
@@ -270,12 +284,14 @@ function correctAnswer(){
     popUp.style.visibility = 'initial';
 }
 
-function incorrectAnswer(){
+function incorrectAnswer(incorrectPenalty){
     displayVerdict.textContent = 'Incorrect! That\'s -5 time points :(';
-    changeToSec -= 5;
     popUp.style.visibility = 'initial';
-}
+    var incorrectPenalty = parseInt(timer.innerHTML);
+    timer.textContent = incorrectPenalty -= 5;
 
+}
+console.log(parseInt(timer.innerHTML));
 
 // when user clicks on the highscores link, it shows them the stored data 
 document.querySelector('#highscores-link').addEventListener("click", function(event){
