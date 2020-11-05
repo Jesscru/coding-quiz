@@ -219,34 +219,34 @@ function displayQ5(quizContent){
             correctAnswer();
             storeHighscore(event);
             timer.style.display = 'hidden';
+            localStorage.setItem('stopClock', changeToSec);
 
         } else {
             incorrectAnswer();
             storeHighscore(event);
             timer.style.display = 'hidden';
+            localStorage.setItem('stopClock', changeToSec);
         }
         
     })
 }
 
 // stores highscore in highscores.html
-function storeHighscore(event, changeToSec){
+function storeHighscore(event){
     userEntry.style.visibility = 'initial';
     beginQuestions.style.display = 'none';
     timer.style.visibility = 'hidden';
-    viewHighscores.style.visibility = 'hidden';
+    highscoreSect.style.visibility = 'hidden';
 
 
     document.querySelector('.final-score').textContent = 'Your final score is ' + changeToSec;
 
     event.preventDefault();
-    
-    localStorage.setItem(userInput.value, changeToSec);
 
     submitBtn.addEventListener("click", function(){
         userEntry.style.display = 'none';
-        highscoreSect.style.visibility = 'initial';
-        userInitials.textContent = userInput.value;
+        userInitials.textContent = userInput.value + ' ------- score: ' + localStorage.getItem('stopClock');
+        localStorage.setItem(userInput.value, localStorage.getItem('stopClock'));
     });
 }
 
