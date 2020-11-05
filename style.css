@@ -59,6 +59,8 @@ body {
 /* styling for questions-begin section */
 .questions-begin-page {
     visibility: visible;
+    width: 70%;
+    padding-left: 15%;
 }
 
 .question {
@@ -72,7 +74,7 @@ body {
     float: left;
     width: auto;
     text-align: left;
-    padding-left: 27%;
+    margin-left: 5%;
 }
 
 

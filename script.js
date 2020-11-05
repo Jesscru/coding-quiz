@@ -79,7 +79,7 @@ var quizContent = [
             '4. console.log'
     ], 
         correctAnswer: 4
-
+       
 }];
 
 function hideElements(){
@@ -106,39 +106,74 @@ function hideElements(){
 }
 
 function displayQAndA (quizContent){ 
+    askQuestion.textContent = quizContent[0].question;
 
-    for (var i = 0; i < quizContent.length; i++) {
-        askQuestion.textContent = quizContent[i].question;
-        answerBtn0.textContent = quizContent[i].answers[0];
-        answerBtn1.textContent = quizContent[i].answers[1];
-        answerBtn2.textContent = quizContent[i].answers[2];
-        answerBtn3.textContent = quizContent[i].answers[3];
+    for (var i = 0; i < quizContent[0].answers[i].length; i++) {
+        answerBtn0.textContent = quizContent[0].answers[0];
+        answerBtn1.textContent = quizContent[0].answers[1];
+        answerBtn2.textContent = quizContent[0].answers[2];
+        answerBtn3.textContent = quizContent[0].answers[3];
+    }
+
+    askQuestion.textContent = quizContent[1].question;
+
+    for (var i = 0; i < quizContent[1].answers[i].length; i++) {
+        answerBtn0.textContent = quizContent[1].answers[0];
+        answerBtn1.textContent = quizContent[1].answers[1];
+        answerBtn2.textContent = quizContent[1].answers[2];
+        answerBtn3.textContent = quizContent[1].answers[3];
     }
 }
 
+    askQuestion.textContent = quizContent[2].question;
 
-// stores highscore in highscores.html
-function storeHighscore(event, quizTime){
-    highscorePage.style.visibility = 'initial';
-    userEntry.style.display = 'none';
+    for (var i = 0; i < quizContent[2].answers[i].length; i++) {
+        answerBtn0.textContent = quizContent[2].answers[0];
+        answerBtn1.textContent = quizContent[2].answers[1];
+        answerBtn2.textContent = quizContent[2].answers[2];
+        answerBtn3.textContent = quizContent[2].answers[3];
+    }
 
-    event.preventDefault();
+    askQuestion.textContent = quizContent[3].question;
+
+    for (var i = 0; i < quizContent[3].answers[i].length; i++) {
+        answerBtn0.textContent = quizContent[3].answers[0];
+        answerBtn1.textContent = quizContent[3].answers[1];
+        answerBtn2.textContent = quizContent[3].answers[2];
+        answerBtn3.textContent = quizContent[3].answers[3];
+    }
+
+    askQuestion.textContent = quizContent[4].question;
+
+    for (var i = 0; i < quizContent[4].answers[i].length; i++) {
+        answerBtn0.textContent = quizContent[4].answers[0];
+        answerBtn1.textContent = quizContent[4].answers[1];
+        answerBtn2.textContent = quizContent[4].answers[2];
+        answerBtn3.textContent = quizContent[4].answers[3];
+    }
+
+// // stores highscore in highscores.html
+// function storeHighscore(event, quizTime){
+//     highscorePage.style.visibility = 'initial';
+//     userEntry.style.display = 'none';
+
+//     event.preventDefault();
     
-    localStorage.setItem(userInput.value, quizTime);
-}
+//     localStorage.setItem(userInput.value, quizTime);
+// }
 
-// takes back to homepage when go back button is clicked
-function goBack(event) {
-    event.preventDefault();
-}
+// // takes back to homepage when go back button is clicked
+// function goBack(event) {
+//     event.preventDefault();
+// }
 
-// clears local storage when clear highscores button is clicked
-function clearHighscores(event){
-    event.preventDefault();
+// // clears local storage when clear highscores button is clicked
+// function clearHighscores(event){
+//     event.preventDefault();
 
-    localStorage.clear();
+//     localStorage.clear();
 
-}
+// }
 
 
 // event listeners and function calls
