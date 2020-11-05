@@ -15,7 +15,7 @@ var timer = document.querySelector(".time-display");
 var beginHere = document.querySelector(".begin-here");
 var beginQuestions = document.querySelector(".questions-begin-page");
 var userEntry = document.querySelector(".user-entry-page");
-var highscoreSect = document.querySelector(".view-highscores-page");
+var highscoreSect = document.querySelector("#view-highscores-page");
 var askQuestion = document.getElementById("question");
 var popUp = document.querySelector(".pop-up-verdict");
 var displayVerdict = document.querySelector('.verdict');
@@ -245,10 +245,12 @@ function storeHighscore(event){
 
     submitBtn.addEventListener("click", function(){
         userEntry.style.display = 'none';
+        highscoreSect.style.visibility = 'visible';
         userInitials.textContent = userInput.value + ' ------- score: ' + localStorage.getItem('stopClock');
         localStorage.setItem(userInput.value, localStorage.getItem('stopClock'));
     });
 }
+
 
 // takes back to homepage when go back button is clicked
 function goBack() {
@@ -273,6 +275,16 @@ function incorrectAnswer(){
     timeStart - 1500;
     popUp.style.visibility = 'initial';
 }
+
+
+// when user clicks on the highscores link, it shows them the stored data 
+document.querySelector('#highscores-link').addEventListener("click", function(){
+    beginHere.style.visibility = 'hidden';
+    timer.style.visibility = 'hidden';
+    highscoreSect.style.visibility = 'visible';
+    userInitials.textContent = localStorage.getItem(userInitials.textContent.value) + ' ------- score: ' + localStorage.getItem('stopClock');
+});
+
 
 // event listeners and function calls
 startBtn.addEventListener("click", startQuiz);

@@ -105,7 +105,7 @@ body {
 
 
 /* styling for view-highscores-page section */
-.view-highscores-page {
+#view-highscores-page {
     visibility: visible;
     padding-left: 40%;
     position: absolute;
@@ -114,17 +114,21 @@ body {
 }
 
 .highscore-container {
-    padding-left: 30%;
     padding-top: 5%;
 }
 
 .stored-user-initials {
     background-color:thistle;
-    width: 10rem;
-    margin-left: 15%;
+    width: 80%;
+    padding: auto 10px;
+    margin-left: 12%;
 }
 
 #go-back,
 #clear {
     margin: 15px;
+}
+
+#go-back {
+    margin-left: 40px;
 }
