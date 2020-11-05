@@ -100,7 +100,7 @@ function hideElements(){
         changeToSec--;
         timer.textContent = 'Time: ' + changeToSec;
         
-        if (timeStart === 0) {
+        if (changeToSec === 0) {
             clearInterval(quizTime);
         }
 
@@ -202,7 +202,7 @@ function displayQ4(quizContent){
     })
 }
 
-function displayQ5(quizContent){ 
+function displayQ5(quizContent, quizTime){ 
     askQuestion.textContent = quizContent[4].question;
 
     for (var i = 0; i < quizContent[4].answers.length - 1; i++) {
@@ -218,12 +218,15 @@ function displayQ5(quizContent){
             storeHighscore(event);
             timer.style.display = 'hidden';
             localStorage.setItem('stopClock', changeToSec);
+            clearInterval()
+            clearInterval(quizTime);
 
         } else {
             incorrectAnswer();
             storeHighscore(event);
             timer.style.display = 'hidden';
             localStorage.setItem('stopClock', changeToSec);
+            clearInterval(quizTime);
         }  
     })
 }
