@@ -15,12 +15,13 @@ var timer = document.querySelector(".time-display");
 var beginHere = document.querySelector(".begin-here");
 var beginQuestions = document.querySelector(".questions-begin-page");
 var userEntry = document.querySelector(".user-entry-page");
-var highscorePage = document.querySelector(".view-highscores-page");
+var highscoreSect = document.querySelector(".view-highscores-page");
 var askQuestion = document.getElementById("question");
 var popUp = document.querySelector(".pop-up-verdict");
 var displayVerdict = document.querySelector('.verdict');
 var userInput = document.querySelector(".input");
 var userInitials = document.querySelector(".stored-user-initials");
+var viewHighscores = document.querySelector(".highscores");
 
 // js exclusive variables
 var timeStart = 75000;
@@ -88,7 +89,7 @@ var quizContent = [
 function hideElements(){
     beginQuestions.style.visibility = 'hidden';
     userEntry.style.visibility = 'hidden';
-    highscorePage.style.visibility = 'hidden';
+    highscoreSect.style.visibility = 'hidden';
     popUp.style.visibility = 'hidden';
 }
 
@@ -233,6 +234,9 @@ function displayQ5(quizContent){
 function storeHighscore(event, changeToSec){
     userEntry.style.visibility = 'initial';
     beginQuestions.style.display = 'none';
+    timer.style.visibility = 'hidden';
+    viewHighscores.style.visibility = 'hidden';
+
 
     document.querySelector('.final-score').textContent = 'Your final score is ' + changeToSec;
 
@@ -242,16 +246,15 @@ function storeHighscore(event, changeToSec){
 
     submitBtn.addEventListener("click", function(){
         userEntry.style.display = 'none';
-        highscorePage.style.visibility = 'initial';
+        highscoreSect.style.visibility = 'initial';
         userInitials.textContent = userInput.value;
     });
 }
 
 // takes back to homepage when go back button is clicked
 function goBack(event) {
-
     beginHere.style.visibility = 'initial'; 
-    highscorePage.style.display = 'none';
+    highscoreSect.style.display = 'none';
     hideElements();
     startQuiz();
 }
@@ -264,6 +267,8 @@ function clearHighscores(event){
     userInitials.textContent = '';
 }
 
+
+// functions that change that change styling and displayed text based on whether the user got the quiz question right or not
 function correctAnswer(){
     displayVerdict.textContent = 'Correct! Keep it up! :)';
     popUp.style.visibility = 'initial';

@@ -18,7 +18,7 @@ body {
 .answer-choice1,
 .answer-choice2,
 .answer-choice3,
-.submit-button,
+#submit-button,
 #go-back, 
 #clear {
     background-color: rgb(93, 5, 175);
