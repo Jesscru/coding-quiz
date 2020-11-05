@@ -1,6 +1,6 @@
 body {
     /* need to change this font to one that matches example a little closer */
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 18px;
     margin: 20px;
     text-align: center;
@@ -117,7 +117,8 @@ body {
     padding-top: 5%;
 }
 
-.stored-user-initials {
+.stored-user-initials,
+#view-highscores-link-display {
     background-color:thistle;
     width: 80%;
     padding: auto 10px;

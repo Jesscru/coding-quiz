@@ -24,62 +24,62 @@ var userInitials = document.querySelector(".stored-user-initials");
 var viewHighscores = document.querySelector(".highscores");
 
 // js exclusive variables
-var timeStart = 75000;
+var timeStart = 120000;
 var changeToSec = timeStart / 1000;
 
 // each question saved in an object, answers nested inside question object, all stored in an array
 var quizContent = [
     { 
-        question: 'Commonly used data types DO NOT include', 
+        question: 'What year was the U.S. constitution written?', 
         answers: [
-            '1. strings',
-            '2. booleans',
-            '3. alerts',
-            '4. numbers'
+            '1. 1805',
+            '2. 1686',
+            '3. 1787',
+            '4. 1792'
     ], 
         correctAnswer: 3
 },
 
     {
-        question: 'The condition of an if / else statement is enclosed within _______.', 
+        question: 'Who was the first person to sign the Declaration of Independence?', 
         answers: [
-            '1. quotes',
-            '2. parentheses',
-            '3. curly brackets',
-            '4. square brackets'
+            '1. Thomas Jefferson',
+            '2. John Hancock',
+            '3. Benjamin Franklin',
+            '4. George Washington'
     ], 
         correctAnswer: 2
 },
     
     {
-        question: 'Arrays in JavaScripts can be used to store _______. ', 
+        question: 'Who was the fist president to live in the white house? ', 
         answers: [
-            '1. numbers and strings',
-            '2. other arrays',
-            '3. booleans',
-            '4. all of the above'
+            '1. James Garfield',
+            '2. Abraham Lincoln',
+            '3. Andrew Jackson',
+            '4. John Adams'
     ], 
         correctAnswer: 4
 },
 
     {
-        question: 'String values must be enclosed within _______ when being assigned to variables.', 
+        question: 'How many amendments does the constituition currently have?', 
         answers: [
-            '1. commas',
-            '2. curly brackets',
-            '3. quotes',
-            '4. parentheses'
+            '1. 24',
+            '2. 31',
+            '3. 27',
+            '4. 19'
     ], 
         correctAnswer: 3
 },
 
     {   
-        question: 'A very useful tool used during development and debugging for printing content to the debugger is:', 
+        question: 'Who was the youngest president to be elected?', 
         answers: [
-            '1. JavaScript',
-            '2. terminal / bash',
-            '3. for loops',
-            '4. console.log'
+            '1. Calvin Coolidge',
+            '2. Barak Obama',
+            '3. Ulysses S. Grant',
+            '4. John F. Kennedy'
     ], 
         correctAnswer: 4
        
@@ -100,7 +100,7 @@ function hideElements(){
         changeToSec--;
         timer.textContent = 'Time: ' + changeToSec;
         
-        if (changeToSec === 0) {
+        if (timeStart === 0) {
             clearInterval(quizTime);
         }
 
@@ -108,6 +108,7 @@ function hideElements(){
 
     beginHere.style.visibility = 'hidden';
     beginQuestions.style.visibility = 'initial';
+    viewHighscores.style.visibility = 'hidden';
     
 }
 
@@ -137,7 +138,6 @@ function displayQ1(quizContent){
 
 function displayQ2(quizContent){ 
     askQuestion.textContent = quizContent[1].question;
-    popUp.style.visibility = 'hidden';
 
     for (var i = 0; i < quizContent[0].answers.length - 1; i++) {
         answerBtn1.textContent = quizContent[1].answers[0];
@@ -159,7 +159,6 @@ function displayQ2(quizContent){
 
 function displayQ3(quizContent){ 
     askQuestion.textContent = quizContent[2].question;
-    popUp.style.visibility = 'hidden';
 
     for (var i = 0; i < quizContent[2].answers.length - 1; i++) {
         answerBtn1.textContent = quizContent[2].answers[0];
@@ -177,13 +176,13 @@ function displayQ3(quizContent){
             displayQ4(quizContent);
         }
     })
+    popUp.style.visibility = 'hidden';
 }
 
 
 
 function displayQ4(quizContent){ 
     askQuestion.textContent = quizContent[3].question;
-    popUp.style.visibility = 'hidden';
 
     for (var i = 0; i < quizContent[3].answers.length - 1; i++) {
         answerBtn1.textContent = quizContent[3].answers[0];
@@ -205,7 +204,6 @@ function displayQ4(quizContent){
 
 function displayQ5(quizContent){ 
     askQuestion.textContent = quizContent[4].question;
-    popUp.style.visibility = 'hidden';
 
     for (var i = 0; i < quizContent[4].answers.length - 1; i++) {
         answerBtn1.textContent = quizContent[4].answers[0];
@@ -226,24 +224,23 @@ function displayQ5(quizContent){
             storeHighscore(event);
             timer.style.display = 'hidden';
             localStorage.setItem('stopClock', changeToSec);
-        }
-        
+        }  
     })
 }
 
 // stores highscore in highscores.html
 function storeHighscore(event){
+    event.preventDefault();
+
     userEntry.style.visibility = 'initial';
     beginQuestions.style.display = 'none';
     timer.style.visibility = 'hidden';
-    highscoreSect.style.visibility = 'hidden';
-
+    viewHighscores.style.visibility = 'hidden';
 
     document.querySelector('.final-score').textContent = 'Your final score is ' + changeToSec;
 
-    event.preventDefault();
-
-    submitBtn.addEventListener("click", function(){
+    submitBtn.addEventListener("click", function(event){
+        event.preventDefault();
         userEntry.style.display = 'none';
         highscoreSect.style.visibility = 'visible';
         userInitials.textContent = userInput.value + ' ------- score: ' + localStorage.getItem('stopClock');
@@ -271,18 +268,21 @@ function correctAnswer(){
 }
 
 function incorrectAnswer(){
-    displayVerdict.textContent = 'Incorrect! That\'s -15 points :(';
-    timeStart - 1500;
+    displayVerdict.textContent = 'Incorrect! That\'s -5 time points :(';
+    changeToSec -= 5;
     popUp.style.visibility = 'initial';
 }
 
 
 // when user clicks on the highscores link, it shows them the stored data 
-document.querySelector('#highscores-link').addEventListener("click", function(){
+document.querySelector('#highscores-link').addEventListener("click", function(event){
+    event.preventDefault();
     beginHere.style.visibility = 'hidden';
     timer.style.visibility = 'hidden';
     highscoreSect.style.visibility = 'visible';
-    userInitials.textContent = localStorage.getItem(userInitials.textContent.value) + ' ------- score: ' + localStorage.getItem('stopClock');
+    viewHighscores.style.visibility = 'hidden';
+    document.querySelector('#view-highscores-link-display').style.visibility = 'visible';
+    document.querySelector('#view-highscores-link-display').textContent = userInput.value + ' ------- score: ' + localStorage.getItem('stopClock');
 });
 
 
