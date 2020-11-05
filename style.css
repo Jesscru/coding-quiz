@@ -21,7 +21,7 @@ body {
 #submit-button,
 #go-back, 
 #clear {
-    background-color: rgb(93, 5, 175);
+    background-color: rgb(24, 117, 12);
     color: white;
     font-size: 16px;
     padding: 5px;
@@ -110,16 +110,18 @@ body {
     padding-left: 40%;
     position: absolute;
     top: 30px;
+}
 
+#highscores-link:visited {
+    color: rgb(24, 117, 12);
 }
 
 .highscore-container {
     padding-top: 5%;
 }
 
-.stored-user-initials,
-#view-highscores-link-display {
-    background-color:thistle;
+.stored-user-initials {
+    background-color: rgb(123, 202, 113);
     width: 80%;
     padding: auto 10px;
     margin-left: 12%;

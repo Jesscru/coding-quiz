@@ -100,7 +100,7 @@ function hideElements(){
         changeToSec--;
         timer.textContent = changeToSec;
 
-        if (changeToSec === 0) {
+        if (parseInt(timer.innerHTML) === 0) {
             clearInterval(quizTime);
         }
 
@@ -238,7 +238,7 @@ function displayQ5(quizContent, changeToSec){
         }  
     })
 
-    if (changeToSec === 0) {
+    if (parseInt(timer.innerHTML) === 0) {
         clearInterval(quizTime);
         changeToSec = 0;
     }
@@ -256,19 +256,23 @@ function storeHighscore(event){
 
     document.querySelector('.final-score').textContent = 'Your final score is ' + changeToSec;
 
+    // when submit button is clicked, value of changeToSec is saved and displayed with user's inputted initials
     submitBtn.addEventListener("click", function(event){
         event.preventDefault();
         userEntry.style.display = 'none';
         highscoreSect.style.visibility = 'visible';
-        userInitials.textContent = userInput.value + ' ------- score: ' + localStorage.getItem('stopClock');
+        localStorage.setItem('stopClock', changeToSec);
         localStorage.setItem(userInput.value, localStorage.getItem('stopClock'));
+        userInitials.textContent = userInput.value + ' ------- score: ' + localStorage.getItem('stopClock');
     });
 }
 
 
 // takes back to homepage when go back button is clicked
 function goBack() {
-    location.reload();
+    beginHere.style.visibility = 'visible';
+    viewHighscores.style.visibility = 'visible';
+    hideElements();
 }
 
 // clears local storage when clear highscores button is clicked
@@ -300,8 +304,7 @@ document.querySelector('#highscores-link').addEventListener("click", function(ev
     timer.style.visibility = 'hidden';
     highscoreSect.style.visibility = 'visible';
     viewHighscores.style.visibility = 'hidden';
-    document.querySelector('#view-highscores-link-display').style.visibility = 'visible';
-    document.querySelector('#view-highscores-link-display').textContent = userInput.value + ' ------- score: ' + localStorage.getItem('stopClock');
+    
 });
 
 
