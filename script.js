@@ -85,7 +85,6 @@ var quizContent = [
        
 }];
 
-
 function hideElements(){
     beginQuestions.style.visibility = 'hidden';
     userEntry.style.visibility = 'hidden';
@@ -252,17 +251,12 @@ function storeHighscore(event, changeToSec){
 }
 
 // takes back to homepage when go back button is clicked
-function goBack(event) {
-    beginHere.style.visibility = 'initial'; 
-    highscoreSect.style.display = 'none';
-    hideElements();
-    startQuiz();
+function goBack() {
+    location.reload();
 }
 
 // clears local storage when clear highscores button is clicked
-function clearHighscores(event){
-    event.preventDefault();
-
+function clearHighscores(){
     localStorage.clear();
     userInitials.textContent = '';
 }
@@ -282,21 +276,7 @@ function incorrectAnswer(){
 
 // event listeners and function calls
 startBtn.addEventListener("click", startQuiz);
-answerBtn1.addEventListener('click', function(event){
-    console.log(event);
-})
-answerBtn2.addEventListener('click', function(event){
-    console.log(event);
-})
-answerBtn3.addEventListener('click', function(event){
-    console.log(event);
-})
-answerBtn4.addEventListener('click', function(event){
-    console.log(event);
-})
-
 goBackBtn.addEventListener("click", goBack);
 clearBtn.addEventListener("click", clearHighscores);
-
 
 hideElements();
