@@ -259,7 +259,7 @@ function storeHighscore(event){
     // when submit button is clicked, value of changeToSec is saved and displayed with user's inputted initials
     submitBtn.addEventListener("click", function(event){
         event.preventDefault();
-        userEntry.style.display = 'none';
+        userEntry.style.visibility = 'hidden';
         highscoreSect.style.visibility = 'visible';
         localStorage.setItem('stopClock', changeToSec);
         localStorage.setItem(userInput.value, localStorage.getItem('stopClock'));
@@ -271,9 +271,10 @@ function storeHighscore(event){
 // takes back to homepage when go back button is clicked
 function goBack() {
     beginHere.style.visibility = 'visible';
+    highscoreSect.style.visibility = 'hidden';
     viewHighscores.style.visibility = 'visible';
-    hideElements();
 }
+console.log(goBack);
 
 // clears local storage when clear highscores button is clicked
 function clearHighscores(){
@@ -293,9 +294,7 @@ function incorrectAnswer(incorrectPenalty){
     popUp.style.visibility = 'initial';
     var incorrectPenalty = parseInt(timer.innerHTML);
     timer.textContent = incorrectPenalty -= 5;
-
 }
-console.log(parseInt(timer.innerHTML));
 
 // when user clicks on the highscores link, it shows them the stored data 
 document.querySelector('#highscores-link').addEventListener("click", function(event){
@@ -304,7 +303,6 @@ document.querySelector('#highscores-link').addEventListener("click", function(ev
     timer.style.visibility = 'hidden';
     highscoreSect.style.visibility = 'visible';
     viewHighscores.style.visibility = 'hidden';
-    
 });
 
 
