@@ -24,7 +24,7 @@ var userInitials = document.querySelector(".stored-user-initials");
 var viewHighscores = document.querySelector(".highscores");
 
 // js exclusive variables
-var timeStart = 120000;
+var timeStart = 90000;
 var changeToSec = timeStart / 1000;
 
 // each question saved in an object, answers nested inside question object, all stored in an array
@@ -100,7 +100,7 @@ function hideElements(){
         changeToSec--;
         timer.textContent = changeToSec;
 
-        if (parseInt(timer.innerHTML) === 0) {
+        if (changeToSec === 0) {
             clearInterval(quizTime);
         }
 
@@ -222,7 +222,7 @@ function displayQ5(quizContent, changeToSec){
     }
 
 // if user clicks the right answer, moves to next question--no penalties; otherwise it moves to next question and deducts 5 second "points"
-    document.querySelector('.list').addEventListener('click', function(event, incorrectPenalty){
+    document.querySelector('.list').addEventListener('click', function(event, incorrectPenalty, quizTime){
         if (event.target.matches(".answer-choice3")){
             correctAnswer();
             storeHighscore(event);
@@ -234,7 +234,9 @@ function displayQ5(quizContent, changeToSec){
             storeHighscore(event);
             timer.style.display = 'hidden';
             localStorage.setItem('stopClock', changeToSec);
-
+            if (changeToSec === 0) {
+                clearInterval(quizTime);
+            }
         }  
     })
 
@@ -290,10 +292,10 @@ function correctAnswer(){
 }
 
 function incorrectAnswer(incorrectPenalty){
-    displayVerdict.textContent = 'Incorrect! That\'s -5 time points :(';
+    displayVerdict.textContent = 'Incorrect! That\'s -10 time points :(';
     popUp.style.visibility = 'initial';
     var incorrectPenalty = parseInt(timer.innerHTML);
-    timer.textContent = incorrectPenalty -= 5;
+    timer.textContent = incorrectPenalty -= 10;
 }
 
 // when user clicks on the highscores link, it shows them the stored data 
